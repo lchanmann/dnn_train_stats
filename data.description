@@ -1,0 +1,37 @@
+# ---------------------------------------#
+# data.description           02/23/2016  #
+# ---------------------------------------#
+
+The files with ".data" extension are generated from statistic aggregation 
+from logs file produced by HNTrainSGD tool in both pre-training and fine-tuning stage.
+
+Comma-separated values format is used to denote 6 attributes in order:
+
+  Attribute 1: Train accuracy
+  Attribuge 2: Validation accuracy
+  Attribute 3: Train cross entropy per frame
+  Attribute 4: Validation cross entropy per frame
+  Attribute 5: Learning rate
+  Attribute 6: Stage
+
+Train accuracy and Validation accuracy attributes are percentage values without percent sign(%).
+  eg. 45.5 is used to denote 45.5%
+  
+Train cross entropy and Validation cross entropy attribute are floating point values with 
+six digit precision after the decimal place.
+  eg. 2.210482
+
+Learning rate attribute is floating point value with scientific notation
+  eg. 1.500000e-04
+  
+Stage attribute has two possible values 1 = pre-train stage and 2 = finetune stage
+  eg. 1
+
+A sample of the ".data" file should look like below:
+
+  83.21,60.92,0.607664,1.486310,1.000000e-03,1
+  83.89,60.97,0.585199,1.494084,1.000000e-03,1
+  84.52,60.90,0.564092,1.502561,1.000000e-03,1
+  86.33,61.72,0.517104,1.446236,3.000000e-04,2
+  86.78,61.35,0.506406,1.452772,3.000000e-04,2
+
