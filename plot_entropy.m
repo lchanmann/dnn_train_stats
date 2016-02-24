@@ -36,3 +36,32 @@ for i=1:length(nH)
     title(['DNN with (' nodes ' hidden units) validation cross entropy']);
     legend(M);
 end
+
+%% Plot dnn4 validation entropy for different number of hidden nodes
+colors = {'b-', 'g--', 'r-.', 'm:', 'c-', 'b--', 'k:'};  % colors for ploting
+H = length(nH);
+M = cell(1, H);         % legend text
+x = zeros(2, H);        % finetune points
+
+% plot
+figure; hold on
+for i=1:H
+    nodes = num2str(nH(i)); % number of hidden nodes
+    
+    % Load data
+    [val_entropy, stage] ...
+        = textread(['dnn4_' nodes '.data'], '%*f,%*f,%*f,%f,%*f,%d');
+
+    plot(val_entropy, colors{i});
+    M{i} = ['nH=' nodes];
+    x(1, i) = find(stage == 2, 1);
+    x(2, i) = val_entropy(x(1, i));
+end
+plot(x(1, :), x(2, :), 'kx');
+
+% plot configurations
+xlim([1 Inf]);
+xlabel('# of Epoch');
+ylabel('J/n');
+title('DNN 4 validation cross entropy');
+legend(M);
