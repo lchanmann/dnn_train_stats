@@ -1,5 +1,5 @@
 % global constants
-nH = 800:200:2000;                          % number of hidden units
+nH = 1000; % 800:200:2000;                          % number of hidden units
 colors = {'b-', 'g--', 'r-.', 'm:', 'c-'};  % colors for ploting
 dnns = 3:7;                                 % dnn models
 
@@ -19,7 +19,7 @@ for i=1:length(nH)
         k = num2str(dnns(j));
         % Load data
         [val_entropy, stage] ...
-            = textread(['dnn' k '_' nodes '.data'], '%*f,%*f,%*f,%f,%*f,%d');
+            = textread(['dnn' k '_15x_' nodes '.data'], '%*f,%f,%*f,%*f,%*f,%d');
 
         plot(val_entropy, colors{j});
 
@@ -34,7 +34,7 @@ for i=1:length(nH)
     xlabel('# of Epoch');
     ylabel('J/n');
     title(['DNN with (' nodes ' hidden units) validation cross entropy']);
-    legend(M);
+    legend(M, 'Location', 'Best');
 end
 
 %% Plot dnn4 validation entropy for different number of hidden nodes

@@ -1,6 +1,6 @@
 % global constants
-l = '7';    % total number of layers
-nH = '800'; % number of hidden units
+l = '6';    % total number of layers
+nH = '512'; % number of hidden units
 
 % Load data
 [train_accuracy, val_accuracy, train_entropy, val_entropy, learning_rate, stage] ...
@@ -31,10 +31,10 @@ ylabel('J/n');
 title(['DNN ' l ' (' nH ' hidden units) training cross entropy']);
 legend('Train', 'Validation', 'Location', 'Best');
 
-% plot learning rate
-figure;
-plot(learning_rate); hold on
-plot(x, learning_rate(x), 'k*'); hold off
-xlabel('# of Epoch');
-ylabel('Learning rate');
-title(['DNN ' l ' (' nH ' hidden units) learning rate']);
+% % plot learning rate
+% figure;
+% plot(learning_rate); hold on
+% plot(x, learning_rate(x), 'k*'); hold off
+% xlabel('# of Epoch');
+% ylabel('Learning rate');
+% title(['DNN ' l ' (' nH ' hidden units) learning rate']);
